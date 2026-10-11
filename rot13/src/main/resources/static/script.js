@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const inputText = document.getElementById('inputText');
-    const outputText = document.getElementById('outputText');
-    const processBtn = document.getElementById('processBtn');
-    const clearBtn = document.getElementById('clearBtn');
+    // Cifrar Elements
+    const encryptInput = document.getElementById('encryptInput');
+    const encryptOutput = document.getElementById('encryptOutput');
+    const encryptBtn = document.getElementById('encryptBtn');
+    const clearEncryptBtn = document.getElementById('clearEncryptBtn');
 
-    processBtn.addEventListener('click', async () => {
-        const texto = inputText.value;
+    // Descifrar Elements
+    const decryptInput = document.getElementById('decryptInput');
+    const decryptOutput = document.getElementById('decryptOutput');
+    const decryptBtn = document.getElementById('decryptBtn');
+    const clearDecryptBtn = document.getElementById('clearDecryptBtn');
 
+    async function procesarTexto(texto, outputElement) {
         if (!texto.trim()) {
-            alert('Por favor, ingresa un texto para procesar.');
+            alert('Por favor, ingresa un texto válido.');
             return;
         }
 
@@ -22,21 +27,37 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error('Error en la comunicación con el servidor backend.');
+                throw new Error('Error en el servidor.');
             }
 
             const data = await response.json();
-            outputText.value = data.resultado || '';
+            outputElement.value = data.resultado || '';
 
         } catch (error) {
             console.error('Error:', error);
-            alert('No se pudo conectar con el servidor Spring Boot. Asegúrate de que la aplicación esté ejecutándose en http://localhost:8080');
+            alert('No se pudo conectar con el servidor Spring Boot en http://localhost:8080');
         }
+    }
+
+    // Eventos Cifrar
+    encryptBtn.addEventListener('click', () => {
+        procesarTexto(encryptInput.value, encryptOutput);
     });
 
-    clearBtn.addEventListener('click', () => {
-        inputText.value = '';
-        outputText.value = '';
-        inputText.focus();
+    clearEncryptBtn.addEventListener('click', () => {
+        encryptInput.value = '';
+        encryptOutput.value = '';
+        encryptInput.focus();
+    });
+
+    // Eventos Descifrar (ROT13 es simétrico, usa la misma API)
+    decryptBtn.addEventListener('click', () => {
+        procesarTexto(decryptInput.value, decryptOutput);
+    });
+
+    clearDecryptBtn.addEventListener('click', () => {
+        decryptInput.value = '';
+        decryptOutput.value = '';
+        decryptInput.focus();
     });
 });
