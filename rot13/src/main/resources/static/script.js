@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Error:', error);
-            alert('No se pudo conectar con el servidor Spring Boot en http://localhost:8080');
+            alert('No se pudo conectar con el servidor Spring Boot en http://localhost:8001');
         }
     }
 
