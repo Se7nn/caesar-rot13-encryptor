@@ -1,3 +1,6 @@
 spring:
   application:
     name: rot13
+
+server:
+  port: 8001
