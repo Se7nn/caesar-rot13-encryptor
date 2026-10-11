@@ -1,0 +1,190 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    padding-bottom: 40px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.app-card h2, .reference-card h2 {
+    color: #1e3c72;
+    margin-bottom: 0.3rem;
+    font-size: 1.8rem;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+textarea {
+    width: 100%;
+    height: 110px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn.primary {
+    background-color: #2a5298;
+    color: white;
+    flex: 2;
+}
+
+.btn.primary:hover {
+    background-color: #1e3c72;
+}
+
+.btn.secondary {
+    background-color: #e2e8f0;
+    color: #334155;
+    flex: 1;
+}
+
+.btn.secondary:hover {
+    background-color: #cbd5e1;
+}
+
+/* Sección de Referencia */
+.ref-content h3 {
+    color: #2a5298;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.ref-content p {
+    margin-bottom: 0.8rem;
+    color: #555;
+}
+
+.ref-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.ref-content li {
+    margin-bottom: 0.4rem;
+}
+
+.alphabet-mapping {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    margin: 15px 0;
+    align-items: center;
+}
+
+.alphabet-row {
+    display: flex;
+    gap: 6px;
+}
+
+.alphabet-row span {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: white;
+    border: 1px solid #cbd5e1;
+    text-align: center;
+    line-height: 28px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    color: #1e3c72;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: #777;
+    font-size: 0.9rem;
+}
