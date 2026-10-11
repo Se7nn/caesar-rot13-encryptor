@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado ROT13 | Aplicación & Referencia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+    <h1>Cifrado ROT13</h1>
+    <p>Herramienta interactiva y referencia técnica para el cifrado César con desplazamiento 13.</p>
+</header>
+
+<main class="container">
+    <!-- Sección Interactiva -->
+    <section class="card app-card">
+        <h2>Cifrar / Descifrar Mensaje</h2>
+        <p class="subtitle">ROT13 es simétrico: aplicar la función dos veces devuelve el texto original.</p>
+
+        <div class="input-group">
+            <label for="inputText">Texto de entrada:</label>
+            <textarea id="inputText" placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
+
+        <div class="actions">
+            <button id="processBtn" class="btn primary">Procesar Mensaje</button>
+            <button id="clearBtn" class="btn secondary">Limpiar</button>
+        </div>
+
+        <div class="input-group">
+            <label for="outputText">Resultado:</label>
+            <textarea id="outputText" readonly placeholder="El resultado aparecerá aquí..."></textarea>
+        </div>
+    </section>
+
+    <!-- Sección de Referencia -->
+    <section class="card reference-card">
+        <h2>Cifrado ROT13 (Método e implementación)</h2>
+
+        <div class="ref-content">
+            <h3>1. ¿Qué es el Cifrado ROT13?</h3>
+            <p><strong>ROT13</strong> (rotar 13 posiciones) es un caso particular del cifrado César, un algoritmo de sustitución monoalfabética desarrollado en la antigua Roma. Consiste en desplazar cada letra del alfabeto 13 posiciones hacia adelante o hacia atrás.</p>
+
+            <h3>2. Propiedad de Involución (Simetría)</h3>
+            <p>El alfabeto latino estándar tiene 26 letras. Dado que 13 + 13 = 26 (una vuelta completa al alfabeto), <strong>la función de cifrado y descifrado son exactamente la misma</strong>. Si aplicas ROT13 a un texto cifrado, recuperas automáticamente el texto original.</p>
+
+            <div class="alphabet-mapping">
+                <div class="alphabet-row">
+                    <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span>
+                </div>
+                <div class="alphabet-row">
+                    <span>N</span><span>O</span><span>P</span><span>Q</span><span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
+                </div>
+            </div>
+
+            <h3>3. Implementación Técnica</h3>
+            <p>Esta aplicación web se comunica con un backend en <strong>Spring Boot</strong>:</p>
+            <ul>
+                <li><strong>Frontend:</strong> Captura el texto mediante un formulario HTML, lo envía por una petición HTTP <code>POST</code> usando JavaScript (<code>fetch</code>) y muestra el resultado dinámicamente.</li>
+                <li><strong>Backend (Java):</strong> Recibe el JSON con el texto, itera sobre cada carácter evaluando si es una letra mayúscula o minúscula, aplica la fórmula aritmética modular <code>(c - base + 13) % 26</code>, y preserva intactos números, espacios y símbolos.</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>Trabajo Grupal - Criptografía | Universidad Nacional José Faustino Sánchez Carrión (UNJFSC)</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
