@@ -1,73 +1,100 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cifrado ROT13 | Aplicación & Referencia</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cifrado ROT13 | Criptografía UNJFSC</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="hero">
-    <h1>Cifrado ROT13</h1>
-    <p>Herramienta interactiva y referencia técnica para el cifrado César con desplazamiento 13.</p>
-</header>
+<div class="app-background">
+    <header class="header">
+        <div class="logo-badge">UNJFSC • Criptografía</div>
+        <h1>Cifrado y Descifrado ROT13</h1>
+        <p>Herramienta moderna de sustitución César (Desplazamiento 13)</p>
+    </header>
 
-<main class="container">
-    <!-- Sección Interactiva -->
-    <section class="card app-card">
-        <h2>Cifrar / Descifrar Mensaje</h2>
-        <p class="subtitle">ROT13 es simétrico: aplicar la función dos veces devuelve el texto original.</p>
-
-        <div class="input-group">
-            <label for="inputText">Texto de entrada:</label>
-            <textarea id="inputText" placeholder="Escribe tu mensaje aquí..."></textarea>
-        </div>
-
-        <div class="actions">
-            <button id="processBtn" class="btn primary">Procesar Mensaje</button>
-            <button id="clearBtn" class="btn secondary">Limpiar</button>
-        </div>
-
-        <div class="input-group">
-            <label for="outputText">Resultado:</label>
-            <textarea id="outputText" readonly placeholder="El resultado aparecerá aquí..."></textarea>
-        </div>
-    </section>
-
-    <!-- Sección de Referencia -->
-    <section class="card reference-card">
-        <h2>Cifrado ROT13 (Método e implementación)</h2>
-
-        <div class="ref-content">
-            <h3>1. ¿Qué es el Cifrado ROT13?</h3>
-            <p><strong>ROT13</strong> (rotar 13 posiciones) es un caso particular del cifrado César, un algoritmo de sustitución monoalfabética desarrollado en la antigua Roma. Consiste en desplazar cada letra del alfabeto 13 posiciones hacia adelante o hacia atrás.</p>
-
-            <h3>2. Propiedad de Involución (Simetría)</h3>
-            <p>El alfabeto latino estándar tiene 26 letras. Dado que 13 + 13 = 26 (una vuelta completa al alfabeto), <strong>la función de cifrado y descifrado son exactamente la misma</strong>. Si aplicas ROT13 a un texto cifrado, recuperas automáticamente el texto original.</p>
-
-            <div class="alphabet-mapping">
-                <div class="alphabet-row">
-                    <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span>
-                </div>
-                <div class="alphabet-row">
-                    <span>N</span><span>O</span><span>P</span><span>Q</span><span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
+    <main class="main-container">
+        <!-- Interfaz de Cifrado -->
+        <section class="card encrypt-card">
+            <div class="card-header">
+                <div class="icon encrypt-icon">🔒</div>
+                <div>
+                    <h2>Cifrar Mensaje</h2>
+                    <p>Convierte texto claro en texto cifrado ROT13</p>
                 </div>
             </div>
 
-            <h3>3. Implementación Técnica</h3>
-            <p>Esta aplicación web se comunica con un backend en <strong>Spring Boot</strong>:</p>
-            <ul>
-                <li><strong>Frontend:</strong> Captura el texto mediante un formulario HTML, lo envía por una petición HTTP <code>POST</code> usando JavaScript (<code>fetch</code>) y muestra el resultado dinámicamente.</li>
-                <li><strong>Backend (Java):</strong> Recibe el JSON con el texto, itera sobre cada carácter evaluando si es una letra mayúscula o minúscula, aplica la fórmula aritmética modular <code>(c - base + 13) % 26</code>, y preserva intactos números, espacios y símbolos.</li>
-            </ul>
+            <div class="input-group">
+                <label for="encryptInput">Texto Original</label>
+                <textarea id="encryptInput" placeholder="Escribe tu mensaje secreto aquí..."></textarea>
+            </div>
+
+            <div class="actions">
+                <button id="encryptBtn" class="btn btn-encrypt">Cifrar Mensaje</button>
+                <button id="clearEncryptBtn" class="btn btn-secondary">Limpiar</button>
+            </div>
+
+            <div class="input-group">
+                <label for="encryptOutput">Resultado Cifrado</label>
+                <textarea id="encryptOutput" readonly placeholder="El texto cifrado aparecerá aquí..."></textarea>
+            </div>
+        </section>
+
+        <!-- Interfaz de Descifrado -->
+        <section class="card decrypt-card">
+            <div class="card-header">
+                <div class="icon decrypt-icon">🔓</div>
+                <div>
+                    <h2>Descifrar Mensaje</h2>
+                    <p>Recupera el texto original desde ROT13</p>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="decryptInput">Texto Cifrado</label>
+                <textarea id="decryptInput" placeholder="Pega tu texto cifrado aquí..."></textarea>
+            </div>
+
+            <div class="actions">
+                <button id="decryptBtn" class="btn btn-decrypt">Descifrar Mensaje</button>
+                <button id="clearDecryptBtn" class="btn btn-secondary">Limpiar</button>
+            </div>
+
+            <div class="input-group">
+                <label for="decryptOutput">Resultado Descifrado</label>
+                <textarea id="decryptOutput" readonly placeholder="El texto original aparecerá aquí..."></textarea>
+            </div>
+        </section>
+    </main>
+
+    <!-- Tabla de Referencia ROT13 (Sin texto teórico) -->
+    <section class="reference-section">
+        <div class="card reference-card">
+            <h3>Equivalencia de Alfabeto ROT13</h3>
+            <div class="alphabet-table">
+                <div class="row">
+                    <span class="label">Original:</span>
+                    <span class="cell">A</span><span class="cell">B</span><span class="cell">C</span><span class="cell">D</span><span class="cell">E</span><span class="cell">F</span><span class="cell">G</span><span class="cell">H</span><span class="cell">I</span><span class="cell">J</span><span class="cell">K</span><span class="cell">L</span><span class="cell">M</span>
+                    <span class="cell">N</span><span class="cell">O</span><span class="cell">P</span><span class="cell">Q</span><span class="cell">R</span><span class="cell">S</span><span class="cell">T</span><span class="cell">U</span><span class="cell">V</span><span class="cell">W</span><span class="cell">X</span><span class="cell">Y</span><span class="cell">Z</span>
+                </div>
+                <div class="row">
+                    <span class="label">ROT13:</span>
+                    <span class="cell cipher">N</span><span class="cell cipher">O</span><span class="cell cipher">P</span><span class="cell cipher">Q</span><span class="cell cipher">R</span><span class="cell cipher">S</span><span class="cell cipher">T</span><span class="cell cipher">U</span><span class="cell cipher">V</span><span class="cell cipher">W</span><span class="cell cipher">X</span><span class="cell cipher">Y</span><span class="cell cipher">Z</span>
+                    <span class="cell cipher">A</span><span class="cell cipher">B</span><span class="cell cipher">C</span><span class="cell cipher">D</span><span class="cell cipher">E</span><span class="cell cipher">F</span><span class="cell cipher">G</span><span class="cell cipher">H</span><span class="cell cipher">I</span><span class="cell cipher">J</span><span class="cell cipher">K</span><span class="cell cipher">L</span><span class="cell cipher">M</span>
+                </div>
+            </div>
         </div>
     </section>
-</main>
 
-<footer>
-    <p>Trabajo Grupal - Criptografía | Universidad Nacional José Faustino Sánchez Carrión (UNJFSC)</p>
-</footer>
+    <footer class="footer">
+        <p>Universidad Nacional José Faustino Sánchez Carrión • Ingeniería de Sistemas</p>
+    </footer>
+</div>
 
-<script src="script.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>
