@@ -29,16 +29,22 @@
             </div>
 
             <div class="input-group">
+                <!-- encryptInput: recibe el mensaje original. -->
                 <label for="encryptInput">Texto Original</label>
                 <textarea id="encryptInput" placeholder="Escribe tu mensaje secreto aquí..."></textarea>
             </div>
 
             <div class="actions">
+                <!-- encryptBtn: botón para cifrar el mensaje. -->
                 <button id="encryptBtn" class="btn btn-encrypt">Cifrar Mensaje</button>
+
+                <!-- clearEncryptBtn: botón para limpiar los campos. -->
                 <button id="clearEncryptBtn" class="btn btn-secondary">Limpiar</button>
             </div>
 
             <div class="input-group">
+
+                <!--encryptOutput: muestra el resultado cifrado. El atributo readonly impide modificarlo directamente. -->
                 <label for="encryptOutput">Resultado Cifrado</label>
                 <textarea id="encryptOutput" readonly placeholder="El texto cifrado aparecerá aquí..."></textarea>
             </div>
@@ -55,23 +61,30 @@
             </div>
 
             <div class="input-group">
+                <!-- decryptInput: recibe el texto cifrado. -->
                 <label for="decryptInput">Texto Cifrado</label>
                 <textarea id="decryptInput" placeholder="Pega tu texto cifrado aquí..."></textarea>
             </div>
 
             <div class="actions">
+
+                <!-- decryptBtn: botón para descifrar -->
                 <button id="decryptBtn" class="btn btn-decrypt">Descifrar Mensaje</button>
+
+                <!-- clearDecryptBtn: limpia los campos -->
                 <button id="clearDecryptBtn" class="btn btn-secondary">Limpiar</button>
             </div>
 
             <div class="input-group">
+
+                <!-- decryptOutput: muestra el mensaje recuperado -->
                 <label for="decryptOutput">Resultado Descifrado</label>
                 <textarea id="decryptOutput" readonly placeholder="El texto original aparecerá aquí..."></textarea>
             </div>
         </section>
     </main>
 
-    <!-- Tabla de Referencia ROT13 (Sin texto teórico) -->
+    <!-- Tabla de Referencia ROT13  -->
     <section class="reference-section">
         <div class="card reference-card">
             <h3>Equivalencia de Alfabeto ROT13</h3>
